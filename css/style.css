@@ -1,0 +1,141 @@
+/* Nie dotyać! */
+/* body * { border-radius: 15px; } */
+
+body {
+    margin: 0px;
+    /* height: 100vh; */
+    font-family: Verdana, sans-serif;
+    background-color: #80e1ff;
+}
+
+#header {
+    background-color: #00c3ff;
+    column-gap: 10px;
+    height: min-content;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#settings {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+#colswitch {
+    border: 2px solid gray;
+    background-color: #1a1a1a;
+    color: #e8e8e8;
+    text-align:center;
+}
+
+#header-item-right {
+    margin-right: 15px;
+    text-align: right;
+}
+
+#date, #time {
+    font-size: 13px;
+}
+
+#icon {
+    width: 50px;
+    height: 50px;
+}
+
+#icon:hover {
+    filter: contrast(130%) hue-rotate(60deg);
+}
+
+#main {
+    flex: auto;
+    align-items: flex-start;
+    background-color: #80e1ff;
+}
+
+#nav {
+    width: fit-content;
+    min-width: fit-content;
+    row-gap: 10px;
+    position: sticky;
+    top: 0px;
+}
+
+.nav-item {
+    background-color: #00c3ff;
+    text-align: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.nav-item:hover {
+    filter: contrast(130%) hue-rotate(60deg);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+
+#content {
+    flex: auto;
+    background-color: #bef0ff;
+    text-overflow: ellipsis;
+    padding: 20px 40px 20px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100%;
+}
+
+.container {
+    display: flex;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.horizontal {
+    flex-direction: row;
+    align-items: center;
+}
+
+.pad {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #500050;
+}
+
+#content img {
+    max-width: 250px;
+    cursor: zoom-in;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    transition: 0.1s;
+    overflow: hidden;
+    margin: 10px;
+}
+
+#content h3, #content h4 {
+    margin-left: 20px;
+    color: #075972;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.test-block {
+    width: 200px;
+    border: 2px solid rgba(41,123,42,1);
+    text-align:center;
+    color: #000000;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
