@@ -1,16 +1,25 @@
 <?php
+    // $link, konfiguracja bazy danych
     include('cfg.php');
+
     include('showpage.php');
 
+    // pokaż błędy do debugowania
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+
     set_include_path('html');
-    $index = 'glowna.html';
-    $header = 'header.html';
-    $nav = 'nav.html';
-    if($_GET['p'] && file_exists('html/'.$_GET['p'].'.html')) {
-            $content = $_GET['p'].'.html';
-    }
-    else
+
+    // id stron domyślnych
+    $index = '1';
+    $header = '6';
+    $nav = '2';
+    // informacja lub id strony 404
+    // $notfound = '';
+
+    // wyświetla index gdy id puste lub jest podstroną z elementami nawigacyjnymi
+    if($_GET['id'] && $_GET['id'] != $header && $_GET['id'] != $nav) {
+        $content = $_GET['id'];
+    } else
         $content = $index;
     
     // $podpis
@@ -33,19 +42,15 @@
     <a name="top"></a>
         <div class="container vertical" id="fullscreen">
             <div class="container horizontal pad" id="header">
-                <?php
-                    include($header);
-                ?>
+                <?= pokazPodstrone($header, $link) ?>
             </div>
             <div class="container horizontal" id="main">
                 <div class="container vertical pad" id="nav">
-                    <?php
-                        include($nav);
-                    ?>
+                    <?= pokazPodstrone($nav, $link) ?>
                 </div>
                 <div id="content">
                     <?php
-                        include($content);
+                        echo pokazPodstrone($content, $link);
                         echo '<br><br>';
                         echo $podpis;
                     ?>
