@@ -2,7 +2,7 @@
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
-    $baza = 'p_aplikacje_www';
+    $baza = 'p_aplikacji_www';
 
     $link = mysqli_connect($dbhost, $dbuser, $dbpass);
     if(!$link) echo '<b>przerwane połączenie</b>';
