@@ -31,8 +31,8 @@ function setcolors() {
 }
 
 function showtime() {
-    let now = new Date();
-    let date = leadingzero(now.getDay())+"."+leadingzero(now.getMonth())+"."+now.getFullYear();
+    let now = new Date;
+    let date = leadingzero(now.getDate())+"."+leadingzero(now.getMonth()+1)+"."+now.getFullYear();
     let time = leadingzero(now.getHours())+":"+leadingzero(now.getMinutes())+":"+leadingzero(now.getSeconds());
     document.getElementById("time").innerHTML = date;
     document.getElementById("date").innerHTML = time;
