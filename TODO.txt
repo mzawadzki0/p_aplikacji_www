@@ -1,0 +1,1 @@
+- ukryj "scrolltotop" jeśli strona jest zbyt krótka (visibility:hidden przez jQuery)

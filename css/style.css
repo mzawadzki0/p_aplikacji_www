@@ -1,3 +1,6 @@
+/* style głównie dla strony index, nagłówka, nawigacji */
+/* i niektórych elementów dziedziczących po <div id=content> */
+
 /* Nie dotyać! */
 /* body * { border-radius: 15px; } */
 
@@ -106,6 +109,7 @@ a {
     color: #500050;
 }
 
+/* Niebezpieczne rzeczy */
 #content img {
     max-width: 250px;
     cursor: zoom-in;
@@ -115,6 +119,7 @@ a {
     margin: 10px;
 }
 
+/* Niebezpieczne rzeczy */
 #content h3, #content h4 {
     margin-left: 20px;
     color: #075972;

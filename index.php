@@ -1,5 +1,5 @@
 <?php
-    // rozpocznij sesję
+    // Rozpocznij sesję
     session_start();
     if (!isset($_SESSION['login_failed']))
         $_SESSION['login_failed'] = false;
@@ -8,16 +8,26 @@
 
     // $link, konfiguracja bazy danych
     include('cfg.php');
+
+    // ControlPanel(), formularz logowania i inne dostępne po zalogowaniu
+    // wszystko pod adresem http://host/./?
     include('admin/admin.php');
+
+    // funkcja pokazPodstrone()
     include('showpage.php');
 
-    // pokaż błędy do debugowania
+    // Pokaż błędy do debugowania
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
+    // Już niepotrzebne bo wszystkie html są w bazie danych
     // set_include_path('html');
 
-    // id stron domyślnych
+    // treść strony wyświetlana domyślnie
     $index = ControlPanel();
+
+    // id stron nawigacji i domyślnej strony z treścią
+    // powinny być niedostępne do wyświetlenia jako treść strony
+    // header zawiera tytuł strony, ikonę, zegar, form wyboru i zmiany kolorów strony, zegar, link do formularza kontaktu, link mailto
     $header = 6;
     $nav = 2;
 
@@ -44,19 +54,22 @@
         <script src="js/anim.js"></script>
         <link rel="icon" type="image/x-icon" href="img/icon.png">
     </head>
+
     <body onload="showtime(), setcolors()">
-    <a name="top"></a>
+    <a name="page-top"></a>
         <div class="container vertical" id="fullscreen">
             <div class="container horizontal pad" id="header">
                 <?= pokazPodstrone($header, $link) ?>
             </div>
+
             <div class="container horizontal" id="main">
                 <div class="container vertical pad" id="nav">
                     <?= pokazPodstrone($nav, $link) ?>
                 </div>
+
                 <div id="content">
                     <?= $content ?>
-                    <div style="display: block; margin-left: auto; text-align: end;"><a href="#top">
+                    <div id="scrolltotop" style="display: block; margin-left: auto; text-align: end;"><a href="#page-top">
                         <svg height="40" width="40">
                             <circle cx="20" cy="20" r="19" stroke="#00b0ff" stroke-width="2" fill-opacity="0%" />
                             <polygon points="20,10 8,27 32,27" stroke-width="2" fill="#00b0ff" />

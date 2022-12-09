@@ -1,3 +1,5 @@
+/* style głownie dla formularzy użytkownika zalogowanego */
+
 .form {
     align-items: center;
 }
@@ -48,11 +50,13 @@
     padding: 1px 5px 1px 5px;
 }
 
+/* Niebezpieczne rzeczy */
 .errormsg {
-    color: red;
-    font-family: monospace;
+    color: red !important;
+    font-family: monospace !important;
 }
 
+/* Niebezpieczne rzeczy */
 #page-edit {
     width: 100%;
     min-height: max-content;    /* Nie działa */

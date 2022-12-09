@@ -1,4 +1,7 @@
+// Funkcja działa od momentu pełnego załadowania strony
+// inaczej może nie znaleźć elementów DOM
 $( document ).ready(function() {
+    // animacja <div class=test-block> na stronie jQuery.html
     $(".test-block").on("click", function() {
         $(this).animate({
             width: "500px",
@@ -8,6 +11,11 @@ $( document ).ready(function() {
         }, 1500);
     });
 
+    // Funkcja powiększenie obrazu po kliknięciu
+    // działa na elementach img w treści strony
+    // tzn. w <div id=content>
+    // dwa kliknięcia powiększają o 75 pp, trzecie wraca do 100%
+    // oraz wraca do domyślnej wartości po opuszczeniu przez kursor obszaru danego img
     $("#content img").on({
         mouseenter: function() {
             let zoom = 1;

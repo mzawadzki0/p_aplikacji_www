@@ -145,7 +145,7 @@ function EdytujPodstrone() {
         else
             $new_status = 0;
         
-        // Ochrona przed błędami SQL injection
+        // Ochrona przed SQL injection
         $new_title = mysqli_real_escape_string($link, $_POST['page_title']);
         $new_content = mysqli_real_escape_string($link, $_POST['page_content']);
 
@@ -272,7 +272,7 @@ function DodajNowaPodstrone() {
         else
             $status = 0;
         
-        // Ochrona przed błędami SQL injection, tj. w EdytujPodstrone()
+        // Ochrona przed SQL injection, tj. w EdytujPodstrone()
         $title = mysqli_real_escape_string($link, $_POST['add_page']);
         $content = mysqli_real_escape_string($link, $_POST['new_page_content']);
 
