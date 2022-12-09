@@ -4,11 +4,11 @@
     // lub zwraca odpowiedni błąd
     function pokazPodstrone($id, $link) {
         // Zwracane w przypadku kiedy strona nieaktywna (status==0)
-        $status_zero_msg = '<h4 class="errormsg" >Strona nieaktywna!</h4>';
+        $status_zero_msg = '<h3 class="errormsg" >Strona nieaktywna!</h3>';
 
         // Sprawdzenie poprawności id
         if(!isCorrectId($id)) {
-            return '<h4 class="errormsg" >Niepoprawne id strony!</h4>';
+            return '<h3 class="errormsg" >Niepoprawne id strony!</h3>';
         }
 
         // ochrona przed SQL injection
@@ -21,7 +21,7 @@
 
         // Błąd gdy id nie istnieje w bazie
         if(empty($row['id'])) {
-            $web = '<h4 class="errormsg" >Nie znaleziono strony!</h4>';
+            $web = '<h3 class="errormsg" >Nie znaleziono strony!</h3>';
         } else {
             // W przypadku kiedy status==0
             if($row['status'] == 0)

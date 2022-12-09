@@ -10,8 +10,8 @@
 
     // Komunikaty błędu
     if(mysqli_connect_errno()) echo '<div class="errormsg">Błąd podczas łączenia z bazą: </div>'.mysqli_connect_error().'<br>';
-    if(!$link) echo '<h4> class="errormsg" >przerwane połączenie</h4><br>';
-    if(!mysqli_select_db($link, $baza)) echo '<h4 class="errormsg">Nie wybrano bazy</h4><br>';
+    if(!$link) echo '<h3> class="errormsg" >przerwane połączenie</h3><br>';
+    if(!mysqli_select_db($link, $baza)) echo '<h3 class="errormsg">Nie wybrano bazy</h3><br>';
 
     // Dane logowania admina
     $login = 'maciej';

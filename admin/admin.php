@@ -297,7 +297,7 @@ function ControlPanel() {
     include('cfg.php');
 
     // Wiadomość o nieudanym logowaniu
-    $login_failed_msg = '<br> <div class="errormsg">Niepoprawne dane logowania</div>';
+    $login_failed_msg = '<br> <h3 class="errormsg">Niepoprawne dane logowania</h3>';
     
     // Przycisk "Wyloguj"
     $logout_btn = ' 

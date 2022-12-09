@@ -9,29 +9,6 @@
     margin: 10px;
 }
 
-.btn {
-    padding: 5px 20px 5px 20px;
-    border-radius: 10px;
-}
-
-.neutralbtn {
-    background-color: #00c3ff;
-}
-
-.evilbtn {
-    background-color: #ff1c1c;
-}
-
-.goodbtn {
-    background-color: #01be08;
-}
-
-.btn:hover {
-    filter: contrast(130%) hue-rotate(60deg);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
-    transition: 0.2s;
-}
-
 #page-list {
     color: black;
     margin: 0px;
@@ -51,14 +28,37 @@
 }
 
 /* Niebezpieczne rzeczy */
-.errormsg {
-    color: red !important;
-    font-family: monospace !important;
-}
-
-/* Niebezpieczne rzeczy */
 #page-edit {
     width: 100%;
     min-height: max-content;    /* Nie działa */
+    font-family: monospace !important;
+}
+
+.btn {
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+}
+
+/* Niebezpieczne rzeczy */
+.neutralbtn {
+    background-color: #27cdff !important;
+}
+
+.evilbtn {
+    background-color: #ff6d54 !important;
+}
+
+.goodbtn {
+    background-color: #46d94b !important;
+}
+
+.btn:hover {
+    filter: contrast(130%) hue-rotate(30deg);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+
+.errormsg {
+    color: red !important;
     font-family: monospace !important;
 }
