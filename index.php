@@ -16,6 +16,9 @@
     // funkcja pokazPodstrone()
     include('showpage.php');
 
+    // funkcje PokazKontakt() itp.
+    include('contact.php');
+
     // Pokaż błędy do debugowania
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
@@ -37,8 +40,9 @@
     } else
         $content = $index;
     
-    // $podpis
+    // $podpis, dane osobowe wykluczone z repo
     include('autor.php');
+    include('mail.php');
 ?>
 
 <!DOCTYPE HTML>

@@ -11,7 +11,7 @@ function FormularzLogowania() {
     <div class="container vertical form">
         <form method="POST" name="login-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
-            <div class="container vertical form-item">
+            <div class="container vertical form form-item">
             Login<br>
             <input name="login" type="text" id="imie"><br>
             Hasło<br>
@@ -46,8 +46,8 @@ function ListaPodstron() {
     // Treść zwracana przez funkcję
     // Tabela z wierszami zawierającymi dane podstron i przyciski edycji
     // tworzonymi przez while() 
-    $return = '<div class="container vertical form-item"><form method="POST"><fieldset>
-    <div class="container vertical form-item">
+    $return = '<div class="container vertical form form-item"><form method="POST"><fieldset>
+    <div class="container vertical form form-item">
         '.$add_page.'
     </div>
     <table id="page-list">
@@ -107,7 +107,7 @@ function EdytujPodstrone() {
     <div class="container vertical">
         <form method="POST" name="edit-form" enctype="multipart/form-data" action="'.$_REQUEST['URI'].'">
         <fieldset>
-            <div class="container vertical form-item">
+            <div class="container vertical form form-item">
                 <div>
                     <label for="currentpageid">id</label>
                     <input id="currentpageid" name="edit_page" "type="number" readonly="readonly" value='.$_POST['edit_page'].'>
@@ -188,7 +188,7 @@ function UsunPodstrone() {
         <div class="container vertical form">
         <form method="POST" name="delete-form" enctype="multipart/form-data" action="'.$_REQUEST['URI'].'">
         <fieldset>
-        <div class="container vertical form-item">
+        <div class="container vertical form form-item">
             <div class="errormsg">
                 Nastąpi usunięcie strony:
             </div>
@@ -240,7 +240,7 @@ function DodajNowaPodstrone() {
     <div class="container vertical">
         <form method="POST" name="add-form" enctype="multipart/form-data" action="'.$_REQUEST['URI'].'">
         <fieldset>
-            <div class="container vertical form-item">
+            <div class="container vertical form form-item">
                 <div>
                     <label for="newpagetitle">Tytuł</label>
                     <input type="text" id="newpagetitle" name="add_page">
@@ -309,11 +309,16 @@ function ControlPanel() {
     // Wynik funkcji, wszystko co ma trafić do returna
     // Wartość wpisana tutaj jest wyświetlana jako placeholder gdy nie ma nic innego
     // np. po wylogowaniu ale przed odświeżeniem strony
-    $return = 'something is missing';
+    $return = 'ładowanie...<br>(jeśli trwa dłużej niż sekundę to coś jest nie tak)';
 
+    // Pokaż formularz kontakt
+    if(isset($_GET['contact_form'])) {
+        return PokazKontakt();
+    }
+
+    // Wszystkie funkcje dostępne dla użytkownika zalogowanego
+    // Domyślnie wyświetla listę podstron
     if($_SESSION['logged_in'] === true || ($_POST['login'] === $login && $_POST['password'] === $password)) {
-        // Wszystkie funkcje dostępne dla użytkownika zalogowanego
-        // Domyślnie wyświetla listę podstron
 
         // Reset zmiennej nieudanego logowania
         $_SESSION['login_failed'] = false;
