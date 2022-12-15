@@ -16,7 +16,7 @@ function FormularzLogowania() {
             <input name="login" type="text" id="imie"><br>
             Hasło<br>
             <input name="password" type="password" id="nazwisko"><br>
-            <input class="btn neutralbtn" style="margin-top: 10px" type="submit" value="Zaloguj">
+            <input class="btn goodbtn" style="margin-top: 10px" type="submit" value="Zaloguj">
             </div>
         </fieldset>
         </form>
@@ -350,7 +350,9 @@ function ControlPanel() {
 
         // Przycisk wyloguj na każdej stronie jeśli zalogowano
         $return = $return.$logout_btn;
+        
     } else {
+        // Funkcje dostępne przed zalogowaniem
         if($_SESSION['login_failed'] === false) {
             // Pierwsze wyświetlenie formularza
             // bez wiadomości o nieudanym logowaniu
@@ -365,6 +367,9 @@ function ControlPanel() {
                 // jest wyświetlana wiadomość o nieudanym logowaniu
                 $return = FormularzLogowania().$login_failed_msg;
         }
+        
+        // Przypomnienie hasła; z contact.php
+        $return .= PrzypomnijHaslo();
     }
     return $return;
 }

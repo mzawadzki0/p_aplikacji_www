@@ -34,7 +34,7 @@ function WyslijMailKontakt() {
 
     // sprawdzenie czy wypełniono wszystkie pola formularza
     if(empty($_POST['contact_email']) || empty($_POST['contact_subject']) || empty($_POST['contact_message'])) {
-        echo '<h4 class="errormsg">Formularz zawiera puste pola!</h4>';
+        echo '<script>alert("Formularz zawiera puste pola!");</script>';
         return PokazKontakt();
     }
 
@@ -54,10 +54,48 @@ function WyslijMailKontakt() {
     }
 }
 
+// Funkcja wysyłająca email na adres z ./mail.php z przypomnieniem hasła, dostępna z przycisku na stronie logowania
 function PrzypomnijHaslo() {
+    // Przycisk Przypomnij hasło
+    $button = '<div class="container vertical form"><form method="POST">
+        <button type="submit" name="remind_password">Przypomnij hasło</button>
+        </form></div>';
 
+    if(isset($_POST['remind_password'])) {
+        // $email
+        include('mail.php');
+
+        // $password
+        include('cfg.php');
+
+        // Header props
+        $header = 'MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: binary;'."\r\n";
+        $header .= 'X-Sender: <noreply@localhost>'."\r\n";
+        $header .= 'X-Mailer: PRapWWW mail 1.2\r\n';
+        $header .= 'X-Priority: 3\r\n';
+        $header .= 'Return-Path: <'.'>'."\r\n";
+        $header .= 'From: noreply@localhost'."\r\n";
+
+        // Temat i treść emaila
+        $subject = 'Przypomnienie hasła administratora serwera';
+        $message = 'Aktualne hasło: ['.$password.']';
+
+         // wysłanie emaila lub wyświetlenie komunikatu błędu
+        if(mail($email, $subject, $message, $header)) {
+            $return = '<div class="container vertical form"><h4>Wysłano email z przypomnieniem hasła!</h4></div>';
+        } else {
+            $return = '<div class="container vertical form"><h4 class="errormsg">Błąd podczas wysyłania przypomnienia</h4></div>';
+        }
+        
+        return $button.$return;
+        
+    } else {
+        return $button;
+    }
+    
 }
 
+// Obsługa przycisku "wyślij" w formularzu kontaktowym
 if(isset($_POST['contact_send'])) {
     WyslijMailKontakt();
 }
