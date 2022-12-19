@@ -46,7 +46,8 @@ function WyslijMailKontakt() {
     $header .= 'X-Mailer: PRapWWW mail 1.2\r\n';
     $header .= 'X-Priority: 3\r\n';
     $header .= 'Return-Path: <'.$_POST['contact_email'].'>'."\r\n";
-    $header .= 'From: '.$_POST['contact_email']."\r\n";  
+    $header .= 'From: '.$_POST['contact_email']."\r\n";
+    $header .= 'Message-ID: <'.microtime().'@p_aplikacji_www.local>'."\r\n";
 
     // wysłanie emaila lub wyświetlenie komunikatu błędu
     if(mail($email, $_POST['contact_subject'], $_POST['contact_message'], $header)) {
@@ -78,6 +79,7 @@ function PrzypomnijHaslo() {
         $header .= 'X-Priority: 3\r\n';
         $header .= 'Return-Path: <'.'>'."\r\n";
         $header .= 'From: noreply@localhost'."\r\n";
+        $header .= 'Message-ID: <'.microtime().'@p_aplikacji_www.local>'."\r\n";
 
         // Temat i treść emaila
         $subject = 'Przypomnienie hasła administratora serwera';
