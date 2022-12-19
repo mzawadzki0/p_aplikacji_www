@@ -1,5 +1,6 @@
 <?php
 
+// Funkcja wyświetla formularz kontakotwy na stronie (host)/(index)/?contact_form
 function PokazKontakt() {
 $return = '
 <div class="container vertical">
@@ -28,8 +29,9 @@ $return = '
 return $return;
 }
 
+// Funkcja dopowiedzialna za wysłanie maila z danymi z formularza kontaktowego, na adres z mail.php
 function WyslijMailKontakt() {
-    // zmienna $email z adresem email odbiorcy
+    // zmienna $email
     include('mail.php');
 
     // sprawdzenie czy wypełniono wszystkie pola formularza
@@ -54,7 +56,8 @@ function WyslijMailKontakt() {
     }
 }
 
-// Funkcja wysyłająca email na adres z ./mail.php z przypomnieniem hasła, dostępna z przycisku na stronie logowania
+// Funkcja wysyłająca email na adres z ./mail.php z przypomnieniem hasła
+// dostępna z przycisku na stronie logowania jeśli nie zalogowano
 function PrzypomnijHaslo() {
     // Przycisk Przypomnij hasło
     $button = '<div class="container vertical form"><form method="POST">
@@ -80,7 +83,7 @@ function PrzypomnijHaslo() {
         $subject = 'Przypomnienie hasła administratora serwera';
         $message = 'Aktualne hasło: ['.$password.']';
 
-         // wysłanie emaila lub wyświetlenie komunikatu błędu
+         // wysłanie emaila i wyświetlenie informacji lub komunikatu błędu
         if(mail($email, $subject, $message, $header)) {
             $return = '<div class="container vertical form"><h4>Wysłano email z przypomnieniem hasła!</h4></div>';
         } else {
