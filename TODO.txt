@@ -1,3 +1,0 @@
-- ukryj "scrolltotop" jeśli strona jest zbyt krótka (visibility:hidden przez jQuery)
-- iframe w filmy.html nie ładują się asynchronicznie więc skrytpy są opóźnione na starcie
-- ustawić SMPT na localhost:25
