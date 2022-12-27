@@ -73,12 +73,11 @@
 
                 <div id="content">
                     <?= $content ?>
-                    <div id="scrolltotop" style="display: block; margin-left: auto; text-align: end;"><a href="#page-top">
-                        <svg height="40" width="40">
-                            <circle cx="20" cy="20" r="19" stroke="#00b0ff" stroke-width="2" fill-opacity="0%" />
+                    <a id="scroll-to-top" href="#page-top">
+                        <svg height="41" width="41">
                             <polygon points="20,10 8,27 32,27" stroke-width="2" fill="#00b0ff" />
                         </svg> 
-                    </a></div>
+                    </a>
                 </div>
             </div>
         </div>
