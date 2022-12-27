@@ -2,7 +2,11 @@
 
 // Funkcja odświerzająca stronę
 function RefreshPage() {
-    echo "<meta http-equiv='refresh' content='0'>";
+    // echo "<meta http-equiv='refresh' content='0'>";
+
+    // Przekierowanie z informacją dla przeglądarki żeby nie pokazywać "Wyślij ponownie" po wysłaniu formularza
+    // 303 See other
+    header('Location: ', true, 303);
 }
 
 // Formularz logowania z polami login, hasło
@@ -154,15 +158,15 @@ function EdytujPodstrone() {
         
         // Wyświetl odpowiedni alert po wykonaniu zapytania
         if(mysqli_query($link, $new_query)) {
-            echo '<script>alert("Zapisano stronę");</script>';
+            // odśwież stronę po wykonaniu zapytania
+            // bez tego kodu, textarea pokazuje treść strony sprzed edycji
+            // poza tym przeglądarka daje opcję "Wyślij ponownie" po F5, co powoduje ponowne wysłanie zapytania
+            // co stwarza problemy szczególnie w DodajPodstrone()
+            // może jest lepszy sposób żeby to zrobić ale nie wiem jaki
+            RefreshPage();
         } else {
             echo '<script>alert("Błąd");</script>';
         }
-
-        // odśwież stronę po wykonaniu zapytania
-        // bez tego kodu, textarea pokazuje treść strony sprzed edycji
-        // może jest lepszy sposób żeby to zrobić ale nie wiem jaki
-        RefreshPage();
     }
     return $return;
 }
@@ -220,7 +224,6 @@ function UsunPodstrone() {
         
         // Wyświetl odpowiedni alert po wykonaniu zapytania
         if(mysqli_query($link, $new_query)) {
-            echo '<script>alert("Usunięto stronę");</script>';
             RefreshPage();
         } else {
             echo '<script>alert("Błąd");</script>';
@@ -281,7 +284,6 @@ function DodajNowaPodstrone() {
 
         // Wyświetl odpowiedni alert po wykonaniu zapytania
         if(mysqli_query($link, $query)) {
-            echo '<script>alert("Dodano stronę");</script>';
             RefreshPage();
         } else {
             echo '<script>alert("Błąd");</script>';
@@ -297,7 +299,10 @@ function ControlPanel() {
     include('cfg.php');
 
     // Wiadomość o nieudanym logowaniu
-    $login_failed_msg = '<br> <h3 class="errormsg">Niepoprawne dane logowania</h3>';
+    $login_failed_msg = '
+    <div class="container vertical form">
+        <h4 class="errormsg">Niepoprawne dane logowania</h4>
+    </div>';
     
     // Przycisk "Wyloguj"
     $logout_btn = ' 
@@ -358,18 +363,16 @@ function ControlPanel() {
             // bez wiadomości o nieudanym logowaniu
             $_SESSION['login_failed'] = true;
 
-            $return = FormularzLogowania();
+            // Przypomnienie hasła; z contact.php
+            $return = FormularzLogowania().PrzypomnijHaslo();
         } else {
             if($_POST['login'] == '' && $_POST['password'] == '')
-                $return = FormularzLogowania();
+                $return = FormularzLogowania().PrzypomnijHaslo();
             else
                 // Jeśli zostały wprowadzone dane, ale nie powiodło się logowanie
                 // jest wyświetlana wiadomość o nieudanym logowaniu
-                $return = FormularzLogowania().$login_failed_msg;
+                $return = FormularzLogowania().PrzypomnijHaslo().$login_failed_msg;
         }
-        
-        // Przypomnienie hasła; z contact.php
-        $return .= PrzypomnijHaslo();
     }
     return $return;
 }
