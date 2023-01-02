@@ -31,7 +31,7 @@ return $return;
 
 // Funkcja dopowiedzialna za wysłanie maila z danymi z formularza kontaktowego, na adres z mail.php
 function WyslijMailKontakt() {
-    // zmienna $email
+    // zmienna $email $hostname
     include('mail.php');
 
     // sprawdzenie czy wypełniono wszystkie pola formularza
@@ -42,12 +42,13 @@ function WyslijMailKontakt() {
 
     // Header props
     $header = 'MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: binary;'."\r\n";
-    $header .= 'X-Sender: <'.$_POST['contact_email'].'>'."\r\n";
-    $header .= 'X-Mailer: PRapWWW mail 1.2\r\n';
-    $header .= 'X-Priority: 3\r\n';
+    $header .= 'X-Sender: <'.$_POST['contact_email'].'>'."\r\n"; // ??????
+    $header .= 'X-Mailer: XAMPP 8.2.0'."\r\n";
+    $header .= 'X-Priority: 3'."\r\n";
     $header .= 'Return-Path: <'.$_POST['contact_email'].'>'."\r\n";
-    $header .= 'From: '.$_POST['contact_email']."\r\n";
-    $header .= 'Message-ID: <'.microtime().'@p_aplikacji_www.local>'."\r\n";
+    $header .= 'From: <'.$_POST['contact_email'].'>'."\r\n";
+    $header .= 'To: <'.$email.'>'."\r\n";
+    $header .= 'Message-ID: <'.hrtime(true).'@'.$hostname.'>'."\r\n";
 
     // wysłanie emaila lub wyświetlenie komunikatu błędu
     if(mail($email, $_POST['contact_subject'], $_POST['contact_message'], $header)) {
@@ -66,7 +67,7 @@ function PrzypomnijHaslo() {
         </form></div>';
 
     if(isset($_POST['remind_password'])) {
-        // $email
+        // $email $hostname
         include('mail.php');
 
         // $password
@@ -74,12 +75,12 @@ function PrzypomnijHaslo() {
 
         // Header props
         $header = 'MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Transfer-Encoding: binary;'."\r\n";
-        $header .= 'X-Sender: <noreply@localhost>'."\r\n";
-        $header .= 'X-Mailer: PRapWWW mail 1.2\r\n';
-        $header .= 'X-Priority: 3\r\n';
-        $header .= 'Return-Path: <'.'>'."\r\n";
-        $header .= 'From: noreply@localhost'."\r\n";
-        $header .= 'Message-ID: <'.microtime().'@p_aplikacji_www.local>'."\r\n";
+        $header .= 'X-Sender: <noreply@'.$hostname.'>'."\r\n";
+        $header .= 'X-Mailer: XAMPP 8.2.0'."\r\n";
+        $header .= 'X-Priority: 3'."\r\n";
+        $header .= 'From: <noreply@'.$hostname.'>'."\r\n";
+        $header .= 'To: <'.$email.'>'."\r\n";
+        $header .= 'Message-ID: <'.hrtime(true).'@'.$hostname.'>'."\r\n";
 
         // Temat i treść emaila
         $subject = 'Przypomnienie hasła administratora serwera';

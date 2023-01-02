@@ -295,7 +295,7 @@ function DodajNowaPodstrone() {
 // Strona główna
 // Zawiera formularz logowania i wszystkie funkcje użytkownika zalogowanego
 function ControlPanel() {
-    // Potrzebna zmienna $link do zapytań
+    // Potrzebna zmienna $link do zapytań, $hostname do headerów w mailach
     include('cfg.php');
 
     // Wiadomość o nieudanym logowaniu

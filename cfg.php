@@ -15,5 +15,8 @@
 
     // Dane logowania admina
     $login = 'maciej';
-    $password = '1234'
+    $password = '1234';
+
+    // Nazwa mojego serwera do headerów w mailach
+    $hostname = 'localhost';
 ?>
