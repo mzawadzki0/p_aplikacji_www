@@ -31,7 +31,7 @@ return $return;
 
 // Funkcja dopowiedzialna za wysłanie maila z danymi z formularza kontaktowego, na adres z mail.php
 function WyslijMailKontakt() {
-    // zmienna $email $hostname
+    // zmienna $email
     include('mail.php');
 
     // sprawdzenie czy wypełniono wszystkie pola formularza
@@ -67,10 +67,10 @@ function PrzypomnijHaslo() {
         </form></div>';
 
     if(isset($_POST['remind_password'])) {
-        // $email $hostname
+        // $email
         include('mail.php');
 
-        // $password
+        // $password $hostname
         include('cfg.php');
 
         // Header props
