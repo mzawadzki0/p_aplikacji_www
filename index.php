@@ -6,39 +6,14 @@
     if (!isset($_SESSION['logged_in']))
         $_SESSION['logged_in'] = false;
 
-    // $link, konfiguracja bazy danych
-    include('cfg.php');
-
-    // ControlPanel(), formularz logowania i inne dostępne po zalogowaniu
-    // wszystko pod adresem http://host/./?
-    include('admin/admin.php');
-
     // funkcja pokazPodstrone()
     include('showpage.php');
-
-    // funkcje PokazKontakt() itp.
-    include('contact.php');
 
     // Pokaż błędy do debugowania
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
     // Już niepotrzebne bo wszystkie html są w bazie danych
     // set_include_path('html');
-
-    // treść strony wyświetlana domyślnie
-    $index = ControlPanel();
-
-    // id stron nawigacji i domyślnej strony z treścią
-    // powinny być niedostępne do wyświetlenia jako treść strony
-    // header zawiera tytuł strony, ikonę, zegar, form wyboru i zmiany kolorów strony, zegar, link do formularza kontaktu, link mailto
-    $header = 6;
-    $nav = 2;
-
-    // wyświetla index gdy id puste
-    if($_GET['page'] && $_GET['page'] != $nav && $_GET['page'] != $header) {
-        $content = pokazPodstrone($_GET['page'], $link);
-    } else
-        $content = $index;
     
     // $podpis, dane osobowe wykluczone z repo
     include('autor.php');
