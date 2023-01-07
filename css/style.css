@@ -10,8 +10,6 @@ body {
     background-color: #80e1ff;
 }
 
-
-
 .container {
     display: flex;
 }
@@ -30,10 +28,6 @@ body {
 
 .pointer {
     cursor: pointer;
-}
-
-#fullscreen {
-    overflow-x: hidden;
 }
 
 #header {
@@ -178,4 +172,5 @@ a {
     border-color: #fe0000;
     transition: 0.1s;
     visibility: hidden;
+    z-index: 10;
 }
