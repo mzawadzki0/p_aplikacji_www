@@ -154,7 +154,7 @@ function EdytujPodstrone() {
         $new_content = mysqli_real_escape_string($link, $_POST['page_content']);
 
         // Zapytanie aktualizujące tytuł, treść i status strony
-        $new_query = 'UPDATE page_list SET page_title="'.$new_title.'", page_content="'.$new_content.'", status="'.$new_status.'" WHERE id='.$_POST['edit_page']." ;";
+        $new_query = 'UPDATE page_list SET page_title="'.$new_title.'", page_content="'.$new_content.'", status="'.$new_status.'" WHERE id='.$_POST['edit_page'].' LIMIT 1';
         
         // Wyświetl odpowiedni alert po wykonaniu zapytania
         if(mysqli_query($link, $new_query)) {
