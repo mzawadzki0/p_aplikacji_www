@@ -53,6 +53,14 @@ function ControlPanel() {
     // np. po wylogowaniu ale przed odświeżeniem strony
     $return = 'ładowanie...<br>(jeśli trwa dłużej niż sekundę to coś jest nie tak)';
 
+    // Nawigacja po panelu admina
+    $links_list = '<div><form method="GET" action="'.$_SERVER['REQUEST_URI'].'">
+    <button class="btn neutralbtn" name="manage_products">Zarządzaj produktami</button>
+    <button class="btn neutralbtn" name="manage_categories">Zarządzaj kategoriami</button>
+    <button class="btn neutralbtn" name="manage_webpages">Zarządzaj podstronami</button>
+    </form></div>
+    ';
+
     // Wszystkie funkcje dostępne dla użytkownika zalogowanego
     // Domyślnie wyświetla listę podstron
     if($_SESSION['logged_in'] === true || isset($_POST['password']) && isset($_POST['login']) && isset($_POST['password']) && ($_POST['login'] === $login && $_POST['password'] === $password)) {
@@ -71,21 +79,23 @@ function ControlPanel() {
         // Obsługa zarządzania produktami
         } else if(isset($_GET['manage_products'])) {
             include('admin/products.php');
-            $return = '';
+            $return = Products().$links_list;
         
         // Obsługa zarządzania kategoriami produktów
         } else if(isset($_GET['manage_categories'])) {
             include('admin/product_categories.php');
-            $return = '';
+            $return = Categories().$links_list;
 
         // Obsługa zarządzania podstronami w bazie
-        } else {
+        } else if(isset($_GET['manage_webpages'])) {
             include('admin/pages.php');
-            $return = Pages();
+            $return = Pages().$links_list;
+        } else {
+            $return = $links_list;
         }
 
         // Przycisk wyloguj na każdej stronie jeśli zalogowano
-        $return = $return.$logout_btn;
+        $return .= $logout_btn;
         
     } else {
         // Funkcja PrzypomnijHaslo
