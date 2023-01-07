@@ -7,11 +7,10 @@ $return = '
         <form method="POST" name="contact_form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
             <div class="container vertical form form-item">
-                <div>
+                <div style="width: 70%">
                     <label for="contact-email-field">Adres email: </label>
                     <input name="contact_email" type="email" id="contact-email-field">
-                </div>
-                <div>
+                <br>
                     <label for="contact-subject-field">Temat: </label>
                     <input name="contact_subject" type="text" id="contact-subject-field">
                 </div>
