@@ -43,11 +43,11 @@ function ListaPodstron() {
     // Treść zwracana przez funkcję
     // Tabela z wierszami zawierającymi dane podstron i przyciski edycji
     // tworzonymi przez while() 
-    $return = '<div class="container vertical form form-item"><form method="POST"><fieldset>
+    $return = '<div class="container vertical form form-item"><form method="POST" enctype="multipart/form-data"><fieldset>
     <div class="container vertical form form-item">
         '.$add_page.'
     </div>
-    <table id="page-list">
+    <table class="item-list" id="page-list">
         <tr>
             <th>
                 ID
@@ -59,7 +59,7 @@ function ListaPodstron() {
         </tr>';
     while($row = mysqli_fetch_array($result)) {
         $id = $row['id'];
-        $title = $row['page_title'];
+        $title = htmlentities($row['page_title']);
         $status = $row['status'];
         // Przycisk edytuj rekord
         $edit_button = '<button type="submit" name="edit_page" value='.$id.'>edytuj</button>';
@@ -176,7 +176,7 @@ function UsunPodstrone() {
 
     $result = mysqli_query($link, $query);
     $row = mysqli_fetch_array($result);
-    $title = $row['page_title'];
+    $title = htmlentities($row['page_title']);
     $id = $row['id'];
 
     // Treść do wyświetlenia
