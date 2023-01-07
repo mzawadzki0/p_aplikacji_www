@@ -1,7 +1,8 @@
 // Funkcja działa od momentu pełnego załadowania strony
 // inaczej może nie znaleźć elementów DOM
 $( document ).ready(function() {
-    // animacja <div class=test-block> na stronie jQuery.html
+    // test
+    // animacja <div class=test-block> na stronie jQuery
     $(".test-block").on("click", function() {
         $(this).animate({
             width: "500px",
