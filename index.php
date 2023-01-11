@@ -6,7 +6,28 @@
     if (!isset($_SESSION['logged_in']))
         $_SESSION['logged_in'] = false;
 
+
+    // Walidacja id z GET
+    include('validateId.php');
+
     // funkcja pokazPodstrone()
+    //  Mapa
+    // * (isCorrectId.php) > walidacja id
+    // * (showpage.php) pokazPodstrone() >
+    //  * ?page=id          > podstrony statyczne z bazy danych > isCorrectId
+    //  * ?contact_form     > (contact.php) WyslijMailKontakt()
+    //  * ?shop             > (shop.php) sklep >
+    //      * (image.php)   > zdjęcia produktów > isCorrectId
+    //      * koszyk        > funkcje koszyka
+    //  * ?                 > (admin/admin.php) ControlPanel() >
+    //      * (contact.php) PrzypomnijHaslo()
+    //      * FormularzLogowania() >
+    //          * (admin/products.php) Products()               > CRUD produktów
+    //              * (image.php) > zdjęcia produktów > isCorrectId
+    //          * (admin/product_categories.php) Categories()   > CRUD kategorii
+    //          * (admin/pages.php) > Pages()                   > CRUD podstron
+    //          * Wyloguj
+    //
     include('showpage.php');
 
     // Pokaż błędy do debugowania

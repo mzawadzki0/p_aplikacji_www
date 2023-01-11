@@ -1,5 +1,7 @@
 <?php
 
+
+// Funkcja główna zwracająca komponent na podstawie zmiennych POST
 function Categories() {
     if(isset($_POST['add_category'])) {
         return DodajKategorie();
@@ -23,18 +25,18 @@ function DodajKategorie() {
 
     $return = '
     <div class="container vertical">
-        <form method="POST" name="add-category-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
             <div class="container vertical form form-item">
                 <div>
-                    <label for="newcategoryname">Nazwa kategorii</label>
-                    <input type="text" id="newcategoryname" name="add_category">
+                    <label for="categoryname">Nazwa kategorii</label>
+                    <input type="text" id="categoryname" placeholder="nie może być puste" minlength="1" maxlength="30" name="add_category">
                 </div>
                 <div>
-                    <label for="newcategoryparent">Kategoria nadrzędna</label>
-                    <select id="newcategoryparent" name="new_parent">
+                    <label for="categoryparent">Kategoria nadrzędna</label>
+                    <select id="categoryparent" name="new_parent">
                         <option value="NULL">(brak)</option>
-                        '.CategoryDropdown(null).'
+                        '.CategoryDropdown().'
                     </select>
                 </div>
                 <div>
@@ -91,19 +93,19 @@ function UsunKategorie() {
     // id, nazwa, id i nazwa rodzica i przyciski Usuń, Anuluj
     $return = '
         <div class="container vertical form">
-        <form method="POST" name="delete-category-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
         <div class="container vertical form form-item">
             <div class="errormsg">
                 Nastąpi usunięcie kategorii:
             </div>
             <div>
-                <label for="currentcategoryid">ID</label>
-                <input id="currentcategoryid" name="delete_category" "type="text" readonly="readonly" value='.$_POST['delete_category'].'><br>
-                <label for="currentcategoryname">Nazwa kategorii</label>
-                <input id="currentcategoryname" type="text" readonly="readonly" value="'.$name.'"><br>
-                <label for="currentcategoryparent">Kategoria nadrzędna</label>
-                <input id="currentcategoryparent" type="text" readonly="readonly" value="'.$parent_name.' ('.$parent.')">
+                <label for="categoryid">ID</label>
+                <input id="categoryid" name="delete_category" "type="text" readonly="readonly" value='.$_POST['delete_category'].'><br>
+                <label for="categoryname">Nazwa kategorii</label>
+                <input id="categoryname" type="text" readonly="readonly" value="'.$name.'"><br>
+                <label for="categoryparent">Kategoria nadrzędna</label>
+                <input id="categoryparent" type="text" readonly="readonly" value="'.$parent_name.' ('.$parent.')">
             </div>
             <div>
             <input class="btn neutralbtn" style="margin-top: 10px" type="submit" name="cancel_delete" value="Anuluj">
@@ -138,7 +140,7 @@ function UsunKategorie() {
 function EdytujKategorie() {
     include('cfg.php');
 
-    // Zapytanie
+    // Zapytanie wybierające wszystkie pola rekordu do formularza
     $query = 'SELECT * FROM category_list WHERE id='.$_POST['edit_category'].' LIMIT 1';
     $result = mysqli_query($link, $query);
     $row = mysqli_fetch_array($result);
@@ -151,28 +153,28 @@ function EdytujKategorie() {
 
     // formularz edycji kategorii
     $return = '
-    <div class="container vertical">
-        <form method="POST" name="edit-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+    <div class="container vertical form form-item">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
             <div class="container vertical form form-item">
                 <div>
-                    <label for="currentcategoryid">id</label>
-                    <input id="currentcategoryid" name="edit_category" "type="number" readonly="readonly" value='.$id.'>
+                    <label for="categoryid">id</label>
+                    <input id="categoryid" name="edit_category" "type="number" readonly="readonly" value='.$id.'>
                 </div>
                 <div>
-                    <label for="currentcategoryname">Nazwa kategorii</label>
-                    <input type="text" id="currentcategoryname" name="current_name" value="'.$name.'">
+                    <label for="categoryname">Nazwa kategorii</label>
+                    <input type="text" id="categoryname" placeholder="nie może być puste" minlength="1" maxlength="30" name="current_name" value="'.$name.'">
                 </div>
                 <div>
-                    <label for="currentcategoryparent">Strona aktywna</label>
-                    <select id="currentcategoryparent" name="current_parent">
+                    <label for="categoryparent">Kategoria nadrzędna</label>
+                    <select id="categoryparent" name="current_parent">
                         <option value="NULL">(brak)</option>
                         '.CategoryDropdown($parent).'
                     </select>
                 </div>
                 <div>
                     <input class="btn neutralbtn" style="margin-top: 10px" type="submit" name="cancel_save" value="Anuluj">
-                    <input class="btn goodbtn" style="margin-top: 10px" type="submit" name="save_page" value="Zapisz">
+                    <input class="btn goodbtn" style="margin-top: 10px" type="submit" name="confirm_save" value="Zapisz">
                 </div>
             </div>
         </fieldset>
@@ -185,7 +187,7 @@ function EdytujKategorie() {
         RefreshPage();
 
     // obsługa przycisku "Zapisz"
-    } else if(isset($_POST['save_page'])) {
+    } else if(isset($_POST['confirm_save'])) {
         
         // Ochrona przed SQL injection
         $new_name = mysqli_real_escape_string($link, $_POST['current_name']);
@@ -229,7 +231,7 @@ function ListaKategorii() {
             </th><th style="min-width: fit-content">
                 Nazwa
             </th><th>
-                Kategoria nadrzędna (ID)
+                (ID) Kategoria nadrzędna
             </th>
         </tr>';
     while($row = mysqli_fetch_array($result)) {
@@ -242,18 +244,19 @@ function ListaKategorii() {
 
         // Przycisk usuń rekord
         $delete_button = '<button type="submit" name="delete_category" value='.$id.'>usuń</button>';
-        $return = $return.'<tr><td>'.$id.'</td><td>'.$name.'</td><td>'.$parent_name.' ('.$parent.')</td><td>'.$edit_button.'</td><td>'.$delete_button.'</td></tr>';
+        $return = $return.'<tr><td>'.$id.'</td><td>'.$name.'</td><td>('.$parent.') '.$parent_name.'</td><td>'.$edit_button.'</td><td>'.$delete_button.'</td></tr>';
     }
     $return = $return.'</fieldset></table></form></div>';
     return $return;
 }
 
 // Funkcja pomocnicza do wyświetlenia elementu <options> bez <select> z listą nazw i id kategorii
-// Argument to id opcji wybranej domyślnie
-function CategoryDropdown($selected_id) {
+// selected_id to id opcji wybranej domyślnie
+// order_by to pole do sortowania
+function CategoryDropdown($selected_id, $order_by='id') {
     include('cfg.php');
 
-    $query = 'SELECT id, category_name FROM category_list ORDER BY id ASC LIMIT 500';
+    $query = 'SELECT id, category_name FROM category_list ORDER BY '.$order_by.' ASC LIMIT 500';
     $result = mysqli_query($link, $query);
 
     $return = '';

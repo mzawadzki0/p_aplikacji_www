@@ -9,14 +9,14 @@ $return = '
             <div class="container vertical form form-item">
                 <div style="width: 70%">
                     <label for="contact-email-field">Adres email: </label>
-                    <input name="contact_email" type="email" id="contact-email-field">
+                    <input class="wide" name="contact_email" type="email" id="contact-email-field">
                 <br>
                     <label for="contact-subject-field">Temat: </label>
-                    <input name="contact_subject" type="text" id="contact-subject-field">
+                    <input class="wide" name="contact_subject" type="text" id="contact-subject-field">
                 </div>
                 <div style="width: 100%" class="container vertical">
                     <label for="contact-msg-field">Treść wiadomości:<br></label>
-                    <textarea name="contact_message" rows="15" id="contact-msg-field"></textarea>
+                    <textarea class="wide" name="contact_message" rows="15" id="contact-msg-field"></textarea>
                 </div>
                 <input class="btn neutralbtn form-item" type="submit" name="contact_send" value="Wyślij">
             </div>

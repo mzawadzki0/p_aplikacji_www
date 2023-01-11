@@ -19,29 +19,29 @@
 }
 
 .item-list td {
-    padding: 1px 10px 1px 10px;
+    padding: 1px 0.35em 1px 0.35em;
 }
 
 .item-list th {
-    padding: 1px 5px 1px 5px;
+    padding: 1px 0.2em 1px 0.2em;
+}
+
+#currentproductphoto {
+    max-width: 70%;
+    max-height: 80%vh;
+}
+
+form textarea {
+    resize: vertical;
 }
 
 /* Niebezpieczne rzeczy */
 #page-edit {
-    width: 100%;
     min-height: max-content;    /* Nie działa */
     font-family: monospace !important;
 }
 
-#contact-msg-field {
-    width: 100%;
-}
-
-#contact-email-field {
-    width: 100%;
-}
-
-#contact-subject-field {
+.wide {
     width: 100%;
 }
 

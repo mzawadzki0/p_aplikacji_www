@@ -6,7 +6,8 @@ let lastscroll = 0;
 
 // Kiedy załadowano, przewinięto albo zmieniono rozmiar okna
 $(window).on("load resize scroll", "", function() {
-    let maxscroll = window.scrollMaxY;
+    // Kompatybilność z przeglądarkami
+    let maxscroll = window.scrollMaxY || (document.documentElement.scrollHeight - document.documentElement.clientHeight);
 
     // Jeśli przewijanie możliwe
     if(maxscroll > 0) {
@@ -28,7 +29,7 @@ $(window).on("load resize scroll", "", function() {
         // byłoby trudniej z animate()
         // transition:; w CSS już załatwia sprawę zmiany pozycji przed zakończeniem animacji
         if(currentscroll > 0 && currentscroll >= lastscroll) {
-            $("#scroll-to-top").css("bottom", "5px");
+            $("#scroll-to-top").css("bottom", "10px");
         } else {
             $("#scroll-to-top").css("bottom", "");
         }

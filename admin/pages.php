@@ -101,27 +101,27 @@ function EdytujPodstrone() {
 
     // formularz edycji podstrony z treścią
     $return = '
-    <div class="container vertical">
-        <form method="POST" name="edit-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+    <div class="container vertical form-item">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
             <div class="container vertical form form-item">
                 <div>
-                    <label for="currentpageid">id</label>
-                    <input id="currentpageid" name="edit_page" "type="number" readonly="readonly" value='.$_POST['edit_page'].'>
+                    <label for="pageid">id</label>
+                    <input id="pageid" name="edit_page" "type="number" readonly="readonly" value='.$_POST['edit_page'].'>
                 </div>
                 <div>
-                    <label for="currentpagetitle">Tytuł</label>
-                    <input type="text" id="currentpagetitle" name="page_title" value="'.$title.'">
+                    <label for="pagetitle">Tytuł</label>
+                    <input type="text" id="pagetitle" maxlength="255" name="page_title" value="'.$title.'">
                 </div>
                 Treść
-                <textarea name="page_content" id="page-edit" rows='.$height.' >'.$content.'</textarea><br>
+                <textarea class="wide" name="page_content" id="page-edit" rows="'.$height.'" >'.$content.'</textarea><br>
                 <div>
                     <label for="aktywna">Strona aktywna</label>
                     <input type="checkbox" id="aktywna" name="page_status" '.$status.'>
                 </div>
                 <div>
                     <input class="btn neutralbtn" style="margin-top: 10px" type="submit" name="cancel_save" value="Anuluj">
-                    <input class="btn goodbtn" style="margin-top: 10px" type="submit" name="save_page" value="Zapisz">
+                    <input class="btn goodbtn" style="margin-top: 10px" type="submit" name="confirm_save" value="Zapisz">
                 </div>
             </div>
         </fieldset>
@@ -134,7 +134,7 @@ function EdytujPodstrone() {
         RefreshPage();
 
     // obsługa przycisku "Zapisz"
-    } else if(isset($_POST['save_page'])) {
+    } else if(isset($_POST['confirm_save'])) {
         // Wartość page_status z <input type=checkbox> jest "on" lub undefined
         // Należy zamienić na 1 lub 0
         if(isset($_POST['page_status']))
@@ -183,17 +183,17 @@ function UsunPodstrone() {
     // id, tytuł i przyciski Potwierdź, Anuluj
     $return = '
         <div class="container vertical form">
-        <form method="POST" name="delete-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
         <div class="container vertical form form-item">
             <div class="errormsg">
                 Nastąpi usunięcie strony:
             </div>
             <div>
-                <label for="currentpageid">id</label>
-                <input id="currentpageid" name="delete_page" "type="number" readonly="readonly" value='.$_POST['delete_page'].'><br>
-                <label for="currentpageid">Tytuł</label>
-                <input id="currentpageid" type="text" readonly="readonly" value="'.$title.'">
+                <label for="pageid">id</label>
+                <input id="pageid" name="delete_page" "type="number" readonly="readonly" value='.$_POST['delete_page'].'><br>
+                <label for="pageid">Tytuł</label>
+                <input id="pageid" type="text" readonly="readonly" value="'.$title.'">
             </div>
             <div>
             <input class="btn neutralbtn" style="margin-top: 10px" type="submit" name="cancel_delete" value="Anuluj">
@@ -234,17 +234,17 @@ function DodajNowaPodstrone() {
 
     $return = '
     <div class="container vertical">
-        <form method="POST" name="add-form" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
+        <form method="POST" enctype="multipart/form-data" action="'.$_SERVER['REQUEST_URI'].'">
         <fieldset>
             <div class="container vertical form form-item">
                 <div>
-                    <label for="newpagetitle">Tytuł</label>
-                    <input type="text" id="newpagetitle" name="add_page">
+                    <label for="pagetitle">Tytuł</label>
+                    <input type="text" id="pagetitle" maxlength="255" name="add_page">
                 </div>
-                <textarea name="new_page_content" id="page-edit" rows="20" ></textarea><br>
+                <textarea class="wide" id="page-edit" name="new_page_content" rows="20" ></textarea><br>
                 <div>
-                    <label for="aktywna">Strona aktywna</label>
-                    <input type="checkbox" id="aktywna" name="new_page_status" checked>
+                    <label for="pageactive">Strona aktywna</label>
+                    <input type="checkbox" id="pageactive" name="new_page_status" checked>
                 </div>
                 <div>
                     <input class="btn neutralbtn" style="margin-top: 10px" type="submit" name="cancel_add" value="Anuluj">

@@ -17,7 +17,7 @@ $( document ).ready(function() {
     // tzn. w <div id=content>
     // dwa kliknięcia powiększają o 75 pp, trzecie wraca do 100%
     // oraz wraca do domyślnej wartości po opuszczeniu przez kursor obszaru danego img
-    $("#content img").on({
+    $(".article img").on({
         mouseenter: function() {
             let zoom = 1;
             $(this).click(function() {

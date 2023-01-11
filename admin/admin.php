@@ -2,6 +2,7 @@
 
 // Funkcja odświerzająca stronę
 function RefreshPage() {
+    // Failsafe
     // echo "<meta http-equiv='refresh' content='0'>";
 
     // Przekierowanie z informacją dla przeglądarki żeby nie pokazywać "Wyślij ponownie" po wysłaniu formularza
@@ -61,15 +62,18 @@ function ControlPanel() {
     </form></div>
     ';
 
-    // Wszystkie funkcje dostępne dla użytkownika zalogowanego
-    // Domyślnie wyświetla listę podstron
+    // Wszystkie funkcje dostępne dla admina zalogowanego
+    // Domyślnie wyświetla listę funkcji, po kliknięciu podfunkcję
+    // wszystkie podfunkcje w zewnętrznych plikach w /admin/
     if($_SESSION['logged_in'] === true || isset($_POST['password']) && isset($_POST['login']) && isset($_POST['password']) && ($_POST['login'] === $login && $_POST['password'] === $password)) {
 
         // Reset zmiennej nieudanego logowania
         $_SESSION['login_failed'] = false;
 
-        // Zapisanie stanu logowania (tzn zalogowano) dla sesji
+        // Zapisanie stanu logowania (tzn. zalogowano) dla sesji
         $_SESSION['logged_in'] = true;
+
+        // Funkcje zalogowanego admina
 
         // Obsługa przycisku "Wyloguj"
         if(isset($_POST['logout'])) {
@@ -79,17 +83,17 @@ function ControlPanel() {
         // Obsługa zarządzania produktami
         } else if(isset($_GET['manage_products'])) {
             include('admin/products.php');
-            $return = Products().$links_list;
+            $return = $links_list.Products();
         
         // Obsługa zarządzania kategoriami produktów
         } else if(isset($_GET['manage_categories'])) {
             include('admin/product_categories.php');
-            $return = Categories().$links_list;
+            $return = $links_list.Categories();
 
         // Obsługa zarządzania podstronami w bazie
         } else if(isset($_GET['manage_webpages'])) {
             include('admin/pages.php');
-            $return = Pages().$links_list;
+            $return = $links_list.Pages();
         } else {
             $return = $links_list;
         }

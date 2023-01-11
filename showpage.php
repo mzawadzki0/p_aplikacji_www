@@ -25,7 +25,6 @@
         include('admin/admin.php');
         $content = ControlPanel();
     }
-        
 
     // Funkcja pokazująca podstronę z bazy danych
     // na podstawie danego linku do bazy i id strony
@@ -38,6 +37,7 @@
         $status_zero_msg = '<h3 class="errormsg" >Strona nieaktywna!</h3>';
 
         // Sprawdzenie poprawności id
+        
         if(!isCorrectId($id)) {
             return '<h3 class="errormsg" >Niepoprawne id strony!</h3>';
         }
@@ -62,13 +62,5 @@
         }
 
         return $web;
-    }
-
-    // funkcja sprawdza poprawność id
-    // true jeśli id poprawne (jest liczbą & jest liczbą całkowitą & nieujemną)
-    function isCorrectId($id) {
-        if(is_numeric($id) && is_int($id + 0) && $id >= 0)
-            return true;
-        return false;
     }
 ?>
