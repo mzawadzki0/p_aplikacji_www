@@ -43,7 +43,7 @@ function DodajProdukt() {
                 <div class="container vertical">
                     <div>   
                         <label for="productexpires">Data wygaśnięcia</label>
-                        <input type="datetime-local" id="productexpires" name="new_expires" min="'.$date_now.'" step="any">
+                        <input type="datetime-local" id="productexpires" name="new_expires" min="'.$date_now.'" step="1">
                     </div>
                     <div>
                         <label for="nproductnetprice">Cena netto</label>
@@ -297,7 +297,7 @@ function EdytujProdukt() {
                 <div class="container vertical">
                     <div>
                         <label for="productexpires">Data wygaśnięcia</label>
-                        <input type="datetime-local" id="productexpires" name="current_expires" min="'.$created.'" step="any" value="'.$expires.'">
+                        <input type="datetime-local" id="productexpires" name="current_expires" min="'.$created.'" step="1" value="'.$expires.'">
                     </div>
                     <div>
                         <label for="productnetprice">Cena netto</label>

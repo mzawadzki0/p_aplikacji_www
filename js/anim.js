@@ -17,12 +17,12 @@ $( document ).ready(function() {
     // tzn. w <div id=content>
     // dwa kliknięcia powiększają o 75 pp, trzecie wraca do 100%
     // oraz wraca do domyślnej wartości po opuszczeniu przez kursor obszaru danego img
-    $(".article img").on({
+    $(".article img, #product-tab img").on({
         mouseenter: function() {
             let zoom = 1;
             $(this).click(function() {
-                if(zoom < 2.5)
-                    zoom += 0.75;   
+                if(zoom < 2.2)
+                    zoom += 0.6;
                 else
                     zoom = 1;
                  $(this).css("transform", "scale("+zoom+")");

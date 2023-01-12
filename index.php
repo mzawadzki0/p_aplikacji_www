@@ -16,7 +16,7 @@
     // * (showpage.php) pokazPodstrone() >
     //  * ?page=id          > podstrony statyczne z bazy danych > isCorrectId
     //  * ?contact_form     > (contact.php) WyslijMailKontakt()
-    //  * ?shop             > (shop.php) sklep >
+    //  * ?shop             > (shop.php) Sklep() >
     //      * (image.php)   > zdjęcia produktów > isCorrectId
     //      * koszyk        > funkcje koszyka
     //  * ?                 > (admin/admin.php) ControlPanel() >
@@ -49,6 +49,7 @@
         <meta http-equiv="Content-Language" content="pl" />
         <link type="text/css" rel="stylesheet" href="css/style.css" />
         <link type="text/css" rel="stylesheet" href="css/forms.css" />
+        <link type="text/css" rel="stylesheet" href="css/shop.css" />
         <script src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
         <script src="js/anim.js"></script>

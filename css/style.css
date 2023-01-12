@@ -6,7 +6,7 @@
 
 body {
     margin: 0px;
-    font-family: Verdana, sans-serif;
+    font-family: 'Verdana', sans-serif;
     background-color: #80e1ff;
 }
 
@@ -76,11 +76,13 @@ body {
 }
 
 #nav {
+    font-family: 'Tahoma', sans-serif;
     width: fit-content;
     min-width: fit-content;
     row-gap: 10px;
     position: sticky;
     top: 0px;
+    background-color: #80e1ff;
 }
 
 .nav-item {
@@ -114,16 +116,19 @@ a {
 
 /* Niebezpieczne rzeczy */
 .article img {
-    max-width: 220px;
     cursor: zoom-in;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
     transition: 0.1s;
     overflow: hidden;
+}
+
+.article img {
+    max-width: 220px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
     margin: 10px;
 }
 
 /* Niebezpieczne rzeczy */
-#content h3, #content h4 {
+.article h3, .article h4, #content br {
     margin-left: 20px;
     color: #075972;
 }

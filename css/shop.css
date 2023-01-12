@@ -1,0 +1,79 @@
+/* Style specyficzne dla podstrony sklep */
+
+#grid-root {
+    align-items: flex-start;
+}
+
+#product-tab {
+    flex: 4;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.separator {
+    border: 1px solid #00c3ff;
+    flex: 0;
+}
+
+.product-listing {
+    width: 200px;
+    padding: 0px 10px 10px 10px;
+    margin: 10px 0px 0px 0px;
+    /* box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4); */
+    /* padding: 10px; */
+    /* border: 1px solid gray; */
+    border-bottom: 2px solid #00c3ff;
+    justify-content: center;
+}
+
+.product-listing-img {
+    /* width: 180px;
+    height: 180px; */
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+.product-listing-img>img {
+    height: 180px;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: 0.1s;
+}
+
+.product-listing-img>img:hover {
+    object-fit: contain;
+}
+
+.product-listing-name {
+    margin-bottom: auto;
+    font-family: Tahoma, sans-serif;
+}
+
+.product-listing-price {
+    margin-left: auto;
+}
+
+#cart-tab {
+    flex-grow: 0;
+    position: sticky;
+
+    bottom: 0px;
+    flex: 1;
+    align-items: stretch;
+    background-color: #80e1ff;
+    overflow-x: auto;
+}
+
+.cart-item {
+    margin-bottom: 10px;
+    background-color: #00c3ff;
+    padding: 5px;
+}
+
+.cart-selected-count {
+    font-family: 'Arial Narrow';
+}
+
+.cart-selected-count-input {
+    width: 50%;
+}
