@@ -9,7 +9,7 @@
     // Podstrona i funkcje sklepu
     if(isset($_GET['shop'])) {
         include('shop.php');
-        $content = Sklep();
+        $content = Shop();
     
     // Funkcje PokazKontakt() itp. formularze kontaktowe
     } else if(isset($_GET['contact_form'])) {
