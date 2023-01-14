@@ -7,7 +7,9 @@
 // Prościej "seamless" przewinąć do ostatniej pozycji po ponownym załadowaniu ale
 // serwer nadal obciążony
 function hardRefresh() {
-    // echo "<meta http-equiv='refresh' content='0'>";
+    // Bez tego Edge nie chce odświerzać
+    echo "<meta http-equiv='refresh' content='0'>";
+    
     header('Location: ', true, 303);
 }
 

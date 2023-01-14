@@ -2,8 +2,8 @@
 
 // Funkcja odświerzająca stronę
 function RefreshPage() {
-    // Failsafe
-    // echo "<meta http-equiv='refresh' content='0'>";
+    // Bez tego Edge nie chce odświerzać
+    echo "<meta http-equiv='refresh' content='0'>";
 
     // Przekierowanie z informacją dla przeglądarki żeby nie pokazywać "Wyślij ponownie" po wysłaniu formularza
     // 303 See other
