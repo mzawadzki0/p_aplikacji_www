@@ -62,7 +62,7 @@
         <div id="scrollprogress"></div>
 
         <div class="container vertical" id="fullscreen">
-            <div class="container horizontal pad" id="header">
+            <div class="container horizontal" id="header">
                 <?= pokazPodstrone($header, $link) ?>
             </div>
 
