@@ -6,7 +6,7 @@ if(!sessionStorage.getItem("darkmode"))
 // Lista elementów które mogą zmienić kolor
 // w formacie znaczników CSS
 // dla switchcolors()
-const elems_to_color = "body, #fullscreen>*, a, #nav, #nav * , #content, #content>*, #content>*";
+const elems_to_color = "body, #fullscreen>*, a, #nav, #nav * , #content, #content>*, #content>*, #cart-tab, #cart-tab>*";
 
 // Funkcja neguje wartość zmiennej darkmode i wywołuje funkcję setcolors
 function switchcolors() {
