@@ -33,10 +33,8 @@ body {
 #header {
     background-color: #00c3ff;
     column-gap: 10px;
-    height: min-content;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    white-space: nowrap;
+    height: fit-content;
+    padding: 0px 10px;
     align-items: center;
 }
 
@@ -78,7 +76,7 @@ body {
 #nav {
     font-family: 'Tahoma', sans-serif;
     width: fit-content;
-    min-width: fit-content;
+    max-width: 25vw;
     row-gap: 10px;
     position: sticky;
     top: 0px;
@@ -90,6 +88,8 @@ body {
     text-align: center;
     font-size: 15px;
     flex-shrink: 0;
+    white-space:nowrap;
+    overflow-x: hidden;
 }
 
 .nav-item:hover {
@@ -102,7 +102,7 @@ body {
     flex: auto;
     background-color: #bef0ff;
     text-overflow: ellipsis;
-    padding: 20px 40px 20px 20px;
+    padding: 10px calc(1vh + 20px) 10px 10px;
     font-size: 15px;
     line-height: 1.7;
     min-height: 100%;
