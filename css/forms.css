@@ -46,7 +46,7 @@ form textarea {
 }
 
 .btn {
-    padding: 5px 20px 5px 20px;
+    padding: 5px 15px 5px 15px;
     border-radius: 10px;
 }
 
@@ -72,4 +72,8 @@ form textarea {
 .errormsg {
     color: red !important;
     font-family: monospace !important;
+}
+
+input:invalid {
+    background-color: #ff9979;
 }
