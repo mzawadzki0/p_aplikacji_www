@@ -158,6 +158,9 @@ function EdytujKategorie() {
         <fieldset>
             <div class="container vertical form form-item">
                 <div>
+                    '.CategoryTree($id).'
+                </div>
+                <div>
                     <label for="categoryid">id</label>
                     <input id="categoryid" name="edit_category" "type="number" readonly="readonly" value='.$id.'>
                 </div>
@@ -275,6 +278,27 @@ function CategoryDropdown($selected_id, $order_by='id') {
     }
 
     return $return;
+}
+
+// Proste drzewo kategorii dla pojedynczego id
+function CategoryTree($id) {
+    include('cfg.php');
+
+    $query = 'SELECT category_name,parent_id FROM category_list WHERE id='.$id.' LIMIT 1';
+    $result = mysqli_query($link, $query);
+    $row = mysqli_fetch_array($result);
+
+    // Zapobiega interpretowaniu tagów HTML z wybieranej treści
+    $name = htmlentities($row['category_name']);
+    $parent = $row['parent_id'];
+
+    // Rekurencja
+    if($parent != '') {
+        return CategoryTree($parent).'> '.$name;
+    }
+
+    // Kategoria z pustym rodzicem będzie zapisana jako:
+    return '*> '.$name;
 }
 
 ?>
