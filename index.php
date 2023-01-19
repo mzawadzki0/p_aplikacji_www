@@ -79,6 +79,8 @@
                             <polygon points="20,10 8,27 32,27" stroke-width="2" fill="#00b0ff" />
                         </svg> 
                     </a>
+
+                    <?= $podpis ?>
                 </div>
             </div>
         </div>
