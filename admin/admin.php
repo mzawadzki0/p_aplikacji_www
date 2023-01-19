@@ -18,7 +18,7 @@ function FormularzLogowania() {
         <fieldset>
             <div class="container vertical form form-item">
             Login<br>
-            <input name="login" type="text" id="imie"><br>
+            <input name="login" type="text" id="imie" autofocus><br>
             Hasło<br>
             <input name="password" type="password" id="nazwisko"><br>
             <input class="btn goodbtn" style="margin-top: 10px" type="submit" value="Zaloguj">
